@@ -3,6 +3,9 @@ const playBtnElement = document.getElementById('play-btn');
 
 
 playBtnElement.addEventListener('click', function () {
+  const sectionDOMElement = document.querySelector('.big-section')
+  sectionDOMElement.classList.add('bg-blue-03')
+  gridElement.classList.remove('pointer-none')
   gridElement.innerHTML = '';
   const bombs = getArrayOfRandomIntBetween(1, 100, 16);
   console.log(bombs)
@@ -17,21 +20,23 @@ playBtnElement.addEventListener('click', function () {
     currentCellElement.addEventListener('click', function () {
       console.log(i + 1);
 
-      // prendo il numero della casella 
       const cellNumber = i + 1;
+      const sectionDOMElement = document.querySelector('.big-section')
       console.log(cellNumber)
-      // SE il numero della casella e' presente nell'array di bombs
       if (bombs.includes(cellNumber)) {
-        currentCellElement.classList.add('bg-red');
+        currentCellElement.classList.add('bg-red', 'pointer-none');
+        sectionDOMElement.classList.add('bg-red-03')
+        sectionDOMElement.classList.remove('bg-blue-03')
+        gridElement.classList.add('pointer-none')
       }
 
       // game over
       // ALTRIMENTI
       else {
-        currentCellElement.classList.add('bg-blue');
+        currentCellElement.classList.add('bg-blue', 'pointer-none');
       }
       // incermentiamo il punteggio
-      // aggiungo la classe bg-blue
+
 
       // SE controllare se l'utente ha vinto
       // stampiamo hai vinto con il punteggio
