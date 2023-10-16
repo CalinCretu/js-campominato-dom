@@ -16,18 +16,36 @@ playBtnElement.addEventListener('click', function () {
     const currentCellElement = cellDomElements[i]
     currentCellElement.addEventListener('click', function () {
       console.log(i + 1);
-      currentCellElement.classList.add('bg-blue');
+
+      // prendo il numero della casella 
+      const cellNumber = i + 1;
+      console.log(cellNumber)
+      // SE il numero della casella e' presente nell'array di bombs
+      if (bombs.includes(cellNumber)) {
+        currentCellElement.classList.add('bg-red');
+      }
+
+      // game over
+      // ALTRIMENTI
+      else {
+        currentCellElement.classList.add('bg-blue');
+      }
+      // incermentiamo il punteggio
+      // aggiungo la classe bg-blue
+
+      // SE controllare se l'utente ha vinto
+      // stampiamo hai vinto con il punteggio
     })
   }
 })
 
-function getArrayOfRandomIntBetween() {
+function getArrayOfRandomIntBetween(minRange, maxRange, number) {
   const bombsArray = [];
 
   //popolare l'array con 16 numeri random
-  while (bombsArray.length < 16) {
+  while (bombsArray.length < number) {
     // generare un numero random da range min a range max
-    const n = getRandomIntInclusive(1, 100);
+    const n = getRandomIntInclusive(minRange, maxRange);
     console.log(bombsArray.includes(n))
     // SE n non e' presente nell'array di bombs
     if (!bombsArray.includes(n)) {
