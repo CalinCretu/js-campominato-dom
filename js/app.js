@@ -28,9 +28,11 @@ function getArrayOfRandomIntBetween() {
   while (bombsArray.length < 16) {
     // generare un numero random da range min a range max
     const n = getRandomIntInclusive(1, 100);
-    console.log(n);
-    // pushare il numero nell'array di bombs
-    bombsArray.push(n);
+    console.log(bombsArray.includes(n))
+    // SE n non e' presente nell'array di bombs
+    if (!bombsArray.includes(n)) {
+      bombsArray.push(n);
+    }
   }
 
   //return aray di numeri generati
