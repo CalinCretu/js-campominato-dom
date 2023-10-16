@@ -1,11 +1,11 @@
 const gridElement = document.querySelector('.grid');
 const playBtnElement = document.getElementById('play-btn');
-
-
 playBtnElement.addEventListener('click', function () {
   const sectionDOMElement = document.querySelector('.big-section')
-  sectionDOMElement.classList.add('bg-blue-03')
-  gridElement.classList.remove('pointer-none')
+  const gameOverDOMElement = document.querySelector('.game-over');
+  sectionDOMElement.classList.add('bg-blue-03');
+  gameOverDOMElement.classList.remove('display-block');
+  gridElement.classList.remove('pointer-none');
   gridElement.innerHTML = '';
   const bombs = getArrayOfRandomIntBetween(1, 100, 16);
   console.log(bombs)
@@ -19,17 +19,17 @@ playBtnElement.addEventListener('click', function () {
     const currentCellElement = cellDomElements[i]
     currentCellElement.addEventListener('click', function () {
       console.log(i + 1);
-
       const cellNumber = i + 1;
-      const sectionDOMElement = document.querySelector('.big-section')
+      const sectionDOMElement = document.querySelector('.big-section');
+      const gameOverDOMElement = document.querySelector('.game-over');
       console.log(cellNumber)
       if (bombs.includes(cellNumber)) {
         currentCellElement.classList.add('bg-red', 'pointer-none');
-        sectionDOMElement.classList.add('bg-red-03')
-        sectionDOMElement.classList.remove('bg-blue-03')
-        gridElement.classList.add('pointer-none')
+        sectionDOMElement.classList.add('bg-red-03');
+        sectionDOMElement.classList.remove('bg-blue-03');
+        gridElement.classList.add('pointer-none');
+        gameOverDOMElement.classList.add('display-block');
       }
-
       // game over
       // ALTRIMENTI
       else {
@@ -37,16 +37,13 @@ playBtnElement.addEventListener('click', function () {
       }
       // incermentiamo il punteggio
 
-
       // SE controllare se l'utente ha vinto
       // stampiamo hai vinto con il punteggio
     })
   }
 })
-
 function getArrayOfRandomIntBetween(minRange, maxRange, number) {
   const bombsArray = [];
-
   //popolare l'array con 16 numeri random
   while (bombsArray.length < number) {
     // generare un numero random da range min a range max
@@ -57,11 +54,9 @@ function getArrayOfRandomIntBetween(minRange, maxRange, number) {
       bombsArray.push(n);
     }
   }
-
   //return aray di numeri generati
   return bombsArray;
 }
-
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
