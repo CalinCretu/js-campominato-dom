@@ -2,7 +2,7 @@ const gridElement = document.querySelector('.grid');
 const playBtnElement = document.getElementById('play-btn');
 playBtnElement.addEventListener('click', function () {
   const sectionDOMElement = document.querySelector('.big-section')
-  const gameOverDOMElement = document.querySelector('.game-over');
+  const gameOverDOMElement = document.querySelector('.container-game-over');
   sectionDOMElement.classList.add('bg-blue-03');
   gameOverDOMElement.classList.remove('display-block');
   gridElement.classList.remove('pointer-none');
@@ -21,7 +21,7 @@ playBtnElement.addEventListener('click', function () {
       console.log(i + 1);
       const cellNumber = i + 1;
       const sectionDOMElement = document.querySelector('.big-section');
-      const gameOverDOMElement = document.querySelector('.game-over');
+      const gameOverDOMElement = document.querySelector('.container-game-over');
       console.log(cellNumber)
       if (bombs.includes(cellNumber)) {
         currentCellElement.classList.add('bg-red', 'pointer-none');
@@ -30,8 +30,6 @@ playBtnElement.addEventListener('click', function () {
         gridElement.classList.add('pointer-none');
         gameOverDOMElement.classList.add('display-block');
       }
-      // game over
-      // ALTRIMENTI
       else {
         currentCellElement.classList.add('bg-blue', 'pointer-none');
       }
